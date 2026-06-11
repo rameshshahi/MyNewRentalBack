@@ -37,12 +37,11 @@ namespace NewRentalApi.Controllers
                     .Where(x => x.IsActive)
                     .Sum(x => x.MonthlyRent);
 
-            decimal previousDue =
-                await _context.tblTenantBill
-                    .Where(x =>
-                        x.TenantId == dto.TenantId &&
-                        !x.IsPaid)
-                    .SumAsync(x => x.RemainingDue);
+            decimal previousDue = await _context.tblTenantBill
+     .Where(x => x.TenantId == dto.TenantId)
+     .OrderByDescending(x => x.BillId)//orOrderByDescending(x => x.BillDate) //
+     .Select(x => x.RemainingDue)
+     .FirstOrDefaultAsync();
 
             decimal total =
                 monthlyRent +
@@ -129,6 +128,17 @@ namespace NewRentalApi.Controllers
                 return NotFound();
 
             return Ok(bill);
+        }
+
+        [HttpGet("TenantBills/{tenantId}")]
+        public async Task<IActionResult> TenantBills(int tenantId)
+        {
+            var bills = await _context.tblTenantBill
+                .Where(x => x.TenantId == tenantId)
+                .OrderByDescending(x => x.BillDate)
+                .ToListAsync();
+
+            return Ok(bills);
         }
     }
 }

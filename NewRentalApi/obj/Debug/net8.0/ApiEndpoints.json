@@ -201,6 +201,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "TenantBills",
+    "RelativePath": "api/Bill/TenantBills/{tenantId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tenantId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NewRentalApi.Controllers.DashboardController",
     "Method": "Summary",
     "RelativePath": "api/Dashboard/Summary",
