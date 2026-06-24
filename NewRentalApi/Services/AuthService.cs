@@ -122,7 +122,8 @@ namespace NewRentalApi.Services
             using var rentalContext =
                 new RentalDbContext(options);
 
-            await rentalContext.Database.MigrateAsync();
+            //await rentalContext.Database.MigrateAsync();
+            await rentalContext.Database.EnsureCreatedAsync();
         }
         private string GenerateJwtToken(OwnerModel owner)
         {

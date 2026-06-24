@@ -712,6 +712,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NewRentalApi.Controllers.TenantAuthController",
+    "Method": "SendOtp",
+    "RelativePath": "api/TenantAuth/send-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NewRentalApi.DTOs.SendOtpDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewRentalApi.Controllers.TenantAuthController",
+    "Method": "VerifyOtp",
+    "RelativePath": "api/TenantAuth/verify-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NewRentalApi.DTOs.VerifyOtpDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NewRentalApi.Controllers.PaymentController",
     "Method": "CurrentMonth",
     "RelativePath": "CurrentMonth/{tenantId}",

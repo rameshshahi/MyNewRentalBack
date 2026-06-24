@@ -13,10 +13,11 @@ namespace NewRentalApi.Controllers
     public class TenantController : ControllerBase
     {
         private readonly RentalDbContext _context;
-
-        public TenantController(RentalDbContext context)
+        private readonly MasterDbContext _masterContext;
+        public TenantController(RentalDbContext context, MasterDbContext masterContext  )
         {
             _context = context;
+            _masterContext = masterContext;
         }
 
         [HttpPost("Add")]
@@ -24,11 +25,37 @@ namespace NewRentalApi.Controllers
         {
             try
             {
+                var existingTenant = await _context.tblTenant
+                    .FirstOrDefaultAsync(x => x.PhoneNo == model.PhoneNo);
+
+                if (existingTenant != null)
+                    return BadRequest("Phone number already exists.");
+
                 model.CreatedDate = DateTime.Now;
                 model.IsActive = true;
 
                 await _context.tblTenant.AddAsync(model);
                 await _context.SaveChangesAsync();
+
+                var databaseName =
+                    User.FindFirst("DatabaseName")?.Value;
+
+                var ownerId =
+                    Convert.ToInt32(
+                        User.FindFirst("OwnerId")?.Value);
+
+                await _masterContext.tblTenantLogin.AddAsync(
+                    new TenantLoginModel
+                    {
+                        TenantId = model.TenantId,
+                        FullName = model.FullName,
+                        PhoneNo = model.PhoneNo,
+                        OwnerId = ownerId,
+                        DatabaseName = databaseName,
+                        IsActive = true
+                    });
+
+                await _masterContext.SaveChangesAsync();
 
                 return Ok(new
                 {
@@ -42,6 +69,8 @@ namespace NewRentalApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
 
         [HttpPut("Edit/{id}")]
         public async Task<IActionResult> Edit(int id, TenantModel model)
@@ -59,7 +88,17 @@ namespace NewRentalApi.Controllers
                 tenant.CitizenshipNo = model.CitizenshipNo;
                 tenant.PermanentAddress = model.PermanentAddress;
 
+                var login = await _masterContext.tblTenantLogin
+                    .FirstOrDefaultAsync(x => x.TenantId == id);
+
+                if (login != null)
+                {
+                    login.FullName = model.FullName;
+                    login.PhoneNo = model.PhoneNo;
+                }
+
                 await _context.SaveChangesAsync();
+                await _masterContext.SaveChangesAsync();
 
                 return Ok(new
                 {
@@ -108,9 +147,16 @@ namespace NewRentalApi.Controllers
                 // 3. Soft delete tenant
                 tenant.IsActive = false;
 
+                var login = await _masterContext.tblTenantLogin.FirstOrDefaultAsync(x => x.TenantId == id);
+
+                if (login != null)
+                {
+                    login.IsActive = false;
+                }
+
                 // 4. Save ALL changes at once
                 await _context.SaveChangesAsync();
-
+                await _masterContext.SaveChangesAsync();
                 return Ok(new
                 {
                     Success = true,

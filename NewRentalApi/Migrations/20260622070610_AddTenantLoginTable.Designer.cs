@@ -12,8 +12,8 @@ using NewRentalApi.Data;
 namespace NewRentalApi.Migrations
 {
     [DbContext(typeof(MasterDbContext))]
-    [Migration("20260608005009_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260622070610_AddTenantLoginTable")]
+    partial class AddTenantLoginTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,40 @@ namespace NewRentalApi.Migrations
                     b.HasKey("OwnerId");
 
                     b.ToTable("tblOwner");
+                });
+
+            modelBuilder.Entity("NewRentalApi.Models.TenantLoginModel", b =>
+                {
+                    b.Property<int>("TenantLoginId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TenantLoginId"));
+
+                    b.Property<string>("DatabaseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TenantLoginId");
+
+                    b.ToTable("tblTenantLogin");
                 });
 #pragma warning restore 612, 618
         }

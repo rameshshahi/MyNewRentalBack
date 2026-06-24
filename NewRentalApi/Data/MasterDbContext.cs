@@ -12,5 +12,7 @@ namespace NewRentalApi.Data
         }
 
         public DbSet<OwnerModel> tblOwner { get; set; }
+        public DbSet<TenantLoginModel> tblTenantLogin { get; set; }
+        public DbSet<TenantOtp> TenantOtps { get; set; }
     }
 }

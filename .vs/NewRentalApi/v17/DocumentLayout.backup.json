@@ -3,64 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\tenantauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\tenantauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\models\\tenantbillmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\models\\tenantbillmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\models\\tenantmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\models\\tenantmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\models\\tenantroommodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\models\\tenantroommodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\dtos\\paybilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\dtos\\paybilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\dtos\\generatebilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\dtos\\generatebilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\models\\utilitybillmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\models\\utilitybillmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\data\\rentaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\data\\rentaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\data\\masterdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\data\\masterdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\migrations\\rentaldb\\20260608010733_rentcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\migrations\\rentaldb\\20260608010733_rentcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\controllers\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\controllers\\tenantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\models\\tenantloginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\models\\tenantloginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|c:\\users\\msi\\onedrive\\desktop\\newrentalapi\\newrentalapi\\migrations\\20260622070610_addtenantlogintable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37440816-5D59-46A9-B00F-EAB6250C3DD2}|NewRentalApi\\NewRentalApi.csproj|solutionrelative:newrentalapi\\migrations\\20260622070610_addtenantlogintable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,190 +38,92 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UtilityBillModel.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\UtilityBillModel.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Models\\UtilityBillModel.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\UtilityBillModel.cs",
-              "RelativeToolTip": "NewRentalApi\\Models\\UtilityBillModel.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MasterDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Data\\MasterDbContext.cs",
+              "RelativeDocumentMoniker": "NewRentalApi\\Data\\MasterDbContext.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Data\\MasterDbContext.cs",
+              "RelativeToolTip": "NewRentalApi\\Data\\MasterDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T02:52:15.95Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TenantBillModel.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantBillModel.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Models\\TenantBillModel.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantBillModel.cs",
-              "RelativeToolTip": "NewRentalApi\\Models\\TenantBillModel.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAQwCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T02:52:04.719Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PayBillDto.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\PayBillDto.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\DTOs\\PayBillDto.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\PayBillDto.cs",
-              "RelativeToolTip": "NewRentalApi\\DTOs\\PayBillDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T02:51:53.545Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GenerateBillDto.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\GenerateBillDto.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\DTOs\\GenerateBillDto.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\GenerateBillDto.cs",
-              "RelativeToolTip": "NewRentalApi\\DTOs\\GenerateBillDto.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA9wBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T02:51:37.623Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "LoginDTo.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\LoginDTo.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\DTOs\\LoginDTo.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\DTOs\\LoginDTo.cs",
-              "RelativeToolTip": "NewRentalApi\\DTOs\\LoginDTo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T02:51:36.427Z"
+              "WhenOpened": "2026-06-23T00:37:12.098Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BIllController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\BIllController.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\BIllController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\BIllController.cs*",
-              "RelativeToolTip": "NewRentalApi\\Controllers\\BIllController.cs*",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAewCgAAAArAAAAAAAAAA==",
+              "Title": "TenantAuthController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantAuthController.cs",
+              "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\TenantAuthController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantAuthController.cs",
+              "RelativeToolTip": "NewRentalApi\\Controllers\\TenantAuthController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAASwCAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T01:19:12.893Z",
+              "WhenOpened": "2026-06-22T07:16:08.552Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TenantModel.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantModel.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Models\\TenantModel.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantModel.cs",
-              "RelativeToolTip": "NewRentalApi\\Models\\TenantModel.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAB0AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T02:14:11.406Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TenantRoomModel.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantRoomModel.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Models\\TenantRoomModel.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantRoomModel.cs",
-              "RelativeToolTip": "NewRentalApi\\Models\\TenantRoomModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T02:17:04.584Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TenantController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantController.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\TenantController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantController.cs",
-              "RelativeToolTip": "NewRentalApi\\Controllers\\TenantController.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAmwJIAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T01:21:15.618Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "RoomController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\RoomController.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\RoomController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\RoomController.cs",
-              "RelativeToolTip": "NewRentalApi\\Controllers\\RoomController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T01:21:06.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\AuthController.cs",
               "RelativeToolTip": "NewRentalApi\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAIAywBUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAADgvx8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T01:09:03.109Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-22T07:16:08.56Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "20260608010733_RentCreate.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Migrations\\RentalDb\\20260608010733_RentCreate.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Migrations\\RentalDb\\20260608010733_RentCreate.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Migrations\\RentalDb\\20260608010733_RentCreate.cs",
-              "RelativeToolTip": "NewRentalApi\\Migrations\\RentalDb\\20260608010733_RentCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T01:07:33.921Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Program.cs",
               "RelativeDocumentMoniker": "NewRentalApi\\Program.cs",
               "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Program.cs",
               "RelativeToolTip": "NewRentalApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T00:58:51.182Z"
+              "WhenOpened": "2026-06-22T07:16:08.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "RentalDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Data\\RentalDbContext.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Data\\RentalDbContext.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Data\\RentalDbContext.cs",
-              "RelativeToolTip": "NewRentalApi\\Data\\RentalDbContext.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAnwA8AAAAkAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "20260622070610_AddTenantLoginTable.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Migrations\\20260622070610_AddTenantLoginTable.cs",
+              "RelativeDocumentMoniker": "NewRentalApi\\Migrations\\20260622070610_AddTenantLoginTable.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Migrations\\20260622070610_AddTenantLoginTable.cs",
+              "RelativeToolTip": "NewRentalApi\\Migrations\\20260622070610_AddTenantLoginTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T00:58:22.662Z"
+              "WhenOpened": "2026-06-22T07:06:10.931Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "NewRentalApi\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Services\\AuthService.cs",
-              "RelativeToolTip": "NewRentalApi\\Services\\AuthService.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAkwHEAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "TenantLoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantLoginModel.cs",
+              "RelativeDocumentMoniker": "NewRentalApi\\Models\\TenantLoginModel.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Models\\TenantLoginModel.cs",
+              "RelativeToolTip": "NewRentalApi\\Models\\TenantLoginModel.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T00:54:59.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-22T07:01:35.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TenantController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantController.cs",
+              "RelativeDocumentMoniker": "NewRentalApi\\Controllers\\TenantController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Desktop\\NewRentalApi\\NewRentalApi\\Controllers\\TenantController.cs",
+              "RelativeToolTip": "NewRentalApi\\Controllers\\TenantController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAhwEYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T06:48:38.973Z"
             }
           ]
         }

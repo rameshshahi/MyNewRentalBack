@@ -30,18 +30,28 @@ namespace NewRentalApi.Controllers
                     x.TenantId == dto.TenantId);
 
             if (tenant == null)
-                return NotFound();
+                return NotFound("Tenant not found");
 
-            decimal monthlyRent =
-                tenant.TenantRooms
-                    .Where(x => x.IsActive)
-                    .Sum(x => x.MonthlyRent);
+            var existingBill = await _context.tblTenantBill
+                   .AnyAsync(x => x.TenantId == dto.TenantId &&
+                   x.Month == dto.Month &&
+                   x.Year == dto.Year);
+
+            if (existingBill)
+                return BadRequest("Bill already exists for this month.");
+
+            var activeRooms = tenant.TenantRooms.Where(x => x.IsActive).ToList();
+
+            if (!activeRooms.Any())
+                return BadRequest("Tenant has no active rooms. Cannot generate bill.");
+
+            decimal monthlyRent = activeRooms.Sum(x => x.MonthlyRent);
 
             decimal previousDue = await _context.tblTenantBill
-     .Where(x => x.TenantId == dto.TenantId)
-     .OrderByDescending(x => x.BillId)//orOrderByDescending(x => x.BillDate) //
-     .Select(x => x.RemainingDue)
-     .FirstOrDefaultAsync();
+                .Where(x => x.TenantId == dto.TenantId)
+                .OrderByDescending(x => x.BillId)
+                .Select(x => (decimal?)x.RemainingDue)
+                .FirstOrDefaultAsync() ?? 0;
 
             decimal total =
                 monthlyRent +

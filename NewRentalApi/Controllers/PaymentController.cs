@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿    using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewRentalApi.Data;
 using NewRentalApi.Models;
