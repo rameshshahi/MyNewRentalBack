@@ -170,6 +170,22 @@
   },
   {
     "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "InitiatePayment",
+    "RelativePath": "api/Bill/esewa-initiate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "NewRentalApi.DTOs.PaymentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
     "Method": "GenerateBill",
     "RelativePath": "api/Bill/GenerateBill",
     "HttpMethod": "POST",
@@ -179,6 +195,22 @@
       {
         "Name": "dto",
         "Type": "NewRentalApi.DTOs.GenerateBillDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "InitiatePayment",
+    "RelativePath": "api/Bill/khalti-initiate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "NewRentalApi.DTOs.KhaltiPaymentRequest",
         "IsRequired": true
       }
     ],
@@ -211,6 +243,43 @@
       {
         "Name": "tenantId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "Verify",
+    "RelativePath": "api/Bill/verify",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transactionUuid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "VerifyPayment",
+    "RelativePath": "api/Bill/verify",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pidx",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

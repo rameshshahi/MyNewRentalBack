@@ -1,6 +1,9 @@
-﻿    using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewRentalApi.Data;
+using NewRentalApi.DTOs;
 using NewRentalApi.Models;
 
 namespace NewRentalApi.Controllers
@@ -45,6 +48,8 @@ namespace NewRentalApi.Controllers
 
             return Ok(payment);
         }
+
+        
 
     }
 }

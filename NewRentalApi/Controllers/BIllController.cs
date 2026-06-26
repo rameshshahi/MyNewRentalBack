@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewRentalApi.Data;
 using NewRentalApi.DTOs;
 using NewRentalApi.Models;
 using NewRentalApi.Services;
-
+using Newtonsoft.Json;
 namespace NewRentalApi.Controllers
 {
     [ApiController]
@@ -12,9 +14,11 @@ namespace NewRentalApi.Controllers
     public class BillController : ControllerBase
     {
         private readonly RentalDbContext _context;
-
+        private readonly HttpClient _httpClient;
+        private const string KhaltiSecretKey = "804be30cbb4e412cb39e10f5f9a98748"; // Replace with your test secret key
         public BillController(RentalDbContext context)
         {
+            _httpClient = new HttpClient();
             _context = context;
         }
 
@@ -149,6 +153,135 @@ namespace NewRentalApi.Controllers
                 .ToListAsync();
 
             return Ok(bills);
+        }
+
+
+        [HttpPost("esewa-initiate")]
+        public IActionResult InitiatePayment([FromBody] PaymentRequest request)
+        {
+            var transactionId = Guid.NewGuid().ToString();
+
+            var signature = GenerateSignature(
+                request.Amount.ToString(),
+                transactionId,
+                "EPAYTEST");
+
+            var formData = new
+            {
+                amount = request.Amount,
+                tax_amount = 0,
+                total_amount = request.Amount,
+                transaction_uuid = transactionId,
+                product_code = "EPAYTEST",
+                product_service_charge = 0,
+                product_delivery_charge = 0,
+                success_url =
+                    "https://localhost:3000/payment-success",
+                failure_url =
+                    "https://localhost:3000/payment-failure",
+                signed_field_names =
+                    "total_amount,transaction_uuid,product_code",
+                signature = signature
+            };
+
+            return Ok(new
+            {
+                paymentUrl =
+                    "https://rc-epay.esewa.com.np/api/epay/main/v2/form",
+                formData
+            });
+        }
+        [HttpGet("verify")]
+        public async Task<IActionResult> Verify(string transactionUuid, decimal amount)
+        {
+            var url =
+                $"https://rc.esewa.com.np/api/epay/transaction/status/" +
+                $"?product_code=EPAYTEST" +
+                $"&total_amount={amount}" +
+                $"&transaction_uuid={transactionUuid}";
+
+            var client = new HttpClient();
+
+            var response = await client.GetAsync(url);
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            return Ok(result);
+        }
+
+        public static string GenerateSignature(string totalAmount, string transactionUuid, string productCode)
+        {
+            string secretKey = "8gBm/:&EnhH.1/q"; // Test Secret
+
+            string message =
+                $"total_amount={totalAmount}," +
+                $"transaction_uuid={transactionUuid}," +
+                $"product_code={productCode}";
+
+            var keyBytes = System.Text.Encoding.UTF8.GetBytes(secretKey);
+            var messageBytes = Encoding.UTF8.GetBytes(message);
+
+            using var hmac = new HMACSHA256(keyBytes);
+
+            var hash = hmac.ComputeHash(messageBytes);
+
+            return Convert.ToBase64String(hash);
+        }
+
+        [HttpPost("khalti-initiate")]
+        public async Task<IActionResult> InitiatePayment([FromBody] KhaltiPaymentRequest request)
+        {
+            var payload = new
+            {
+                return_url = "http://localhost:3000/payment-success", // Your frontend URL
+                website_url = "http://localhost:3000",
+                amount = request.Amount,
+                purchase_order_id = request.ProductIdentity,
+                purchase_order_name = request.ProductName,
+            };
+
+            var json = JsonConvert.SerializeObject(payload);
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, "https://a.khalti.com/api/v2/epayment/initiate/");
+            httpRequest.Content = httpContent;
+            httpRequest.Headers.Add("Authorization", $"Key {KhaltiSecretKey}");
+
+            var response = await _httpClient.SendAsync(httpRequest);
+            var result = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                // Optionally log the error for debugging
+                return BadRequest(new { error = result });
+            }
+
+            dynamic res = JsonConvert.DeserializeObject(result);
+
+            // Check if pidx exists in the response
+            if (res?.pidx == null)
+            {
+                return BadRequest(new { error = "Khalti did not return a pidx." });
+            }
+
+            // Return pidx as token and also return the payment_url for frontend redirection
+            return Ok(new { token = res.pidx.ToString(), payment_url = res.payment_url.ToString() });
+        }
+
+        [HttpPost("verify")]
+        public async Task<IActionResult> VerifyPayment([FromBody] string pidx)
+        {
+            var json = JsonConvert.SerializeObject(new { pidx });
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, "https://a.khalti.com/api/v2/epayment/lookup/");
+            httpRequest.Content = httpContent;
+            httpRequest.Headers.Add("Authorization", $"Key {KhaltiSecretKey}");
+
+            var response = await _httpClient.SendAsync(httpRequest);
+            var result = await response.Content.ReadAsStringAsync();
+
+            return Ok(JsonConvert.DeserializeObject(result));
         }
     }
 }

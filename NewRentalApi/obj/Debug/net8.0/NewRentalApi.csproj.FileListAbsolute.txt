@@ -297,3 +297,4 @@ C:\Users\MSI\OneDrive\Desktop\NewRentalApi\NewRentalApi\obj\Debug\net8.0\NewRent
 C:\Users\MSI\OneDrive\Desktop\NewRentalApi\NewRentalApi\obj\Debug\net8.0\NewRentalApi.genruntimeconfig.cache
 C:\Users\MSI\OneDrive\Desktop\NewRentalApi\NewRentalApi\obj\Debug\net8.0\ref\NewRentalApi.dll
 C:\Users\MSI\OneDrive\Desktop\NewRentalApi\NewRentalApi\obj\Debug\net8.0\NewRentalApi.sourcelink.json
+C:\Users\MSI\OneDrive\Desktop\NewRentalApi\NewRentalApi\bin\Debug\net8.0\Newtonsoft.Json.dll
