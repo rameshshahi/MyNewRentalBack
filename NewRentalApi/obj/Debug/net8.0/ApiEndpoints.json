@@ -286,6 +286,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NewRentalApi.Controllers.BillController",
+    "Method": "VerifyPayment",
+    "RelativePath": "api/Bill/VerifyPayment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NewRentalApi.DTOs.VerifyPaymentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NewRentalApi.Controllers.DashboardController",
     "Method": "Summary",
     "RelativePath": "api/Dashboard/Summary",

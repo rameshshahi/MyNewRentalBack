@@ -295,6 +295,37 @@
         }
       }
     },
+    "/api/Bill/VerifyPayment": {
+      "post": {
+        "tags": [
+          "Bill"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyPaymentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyPaymentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyPaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Dashboard/Summary": {
       "get": {
         "tags": [
@@ -1904,6 +1935,32 @@
             "nullable": true
           },
           "otp": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VerifyPaymentDto": {
+        "type": "object",
+        "properties": {
+          "billId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentGateway": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "pidx": {
+            "type": "string",
+            "nullable": true
+          },
+          "refId": {
             "type": "string",
             "nullable": true
           }

@@ -21,5 +21,7 @@ namespace NewRentalApi.Data
         public DbSet<TenantDocumentModel> tblTenantDocument { get; set; }
         public DbSet<TenantBillModel> tblTenantBill { get; set; }
         public DbSet<TenantOtp> TenantOtps { get; set; }
+
+        public DbSet<TenantPaymentModel> tblTenantPayment { get; set; }
     }
 }

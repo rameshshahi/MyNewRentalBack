@@ -24,10 +24,16 @@ namespace NewRentalApi.Controllers
 
 
 
-
+            
         [HttpPost("GenerateBill")]
         public async Task<IActionResult> GenerateBill(GenerateBillDto dto)
         {
+            if (dto.Year != DateTime.Now.Year || dto.Month != DateTime.Now.Month)
+            {
+                return BadRequest("Bills can only be generated for the current year and current month.");
+            }
+
+
             var tenant = await _context.tblTenant
                 .Include(x => x.TenantRooms)
                 .FirstOrDefaultAsync(x =>
@@ -282,6 +288,169 @@ namespace NewRentalApi.Controllers
             var result = await response.Content.ReadAsStringAsync();
 
             return Ok(JsonConvert.DeserializeObject(result));
+        }
+
+        [HttpPost("VerifyPayment")]
+        public async Task<IActionResult> VerifyPayment(VerifyPaymentDto dto)
+        {
+            var bill = await _context.tblTenantBill
+                .FirstOrDefaultAsync(x => x.BillId == dto.BillId);
+
+            if (bill == null)
+                return NotFound("Bill not found.");
+
+            decimal paidAmount = 0;
+            string transactionId = "";
+            string paymentStatus = "";
+
+            //---------------------------------------
+            // KHALTI
+            //---------------------------------------
+            if (dto.PaymentGateway == "Khalti")
+            {
+                var json = JsonConvert.SerializeObject(new
+                {
+                    pidx = dto.Pidx
+                });
+
+                var request =
+                    new HttpRequestMessage(
+                        HttpMethod.Post,
+                        "https://a.khalti.com/api/v2/epayment/lookup/");
+
+                request.Content =
+                    new StringContent(
+                        json,
+                        Encoding.UTF8,
+                        "application/json");
+
+                request.Headers.Add(
+                    "Authorization",
+                    $"Key {KhaltiSecretKey}");
+
+                var response =
+                    await _httpClient.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                    return BadRequest("Khalti verification failed.");
+
+                var result =
+                    await response.Content.ReadAsStringAsync();
+
+                dynamic payment =
+                    JsonConvert.DeserializeObject(result);
+
+                if (payment.status != "Completed")
+                    return BadRequest("Payment not completed.");
+
+                paidAmount =
+                    Convert.ToDecimal(payment.total_amount) / 100;
+
+                transactionId =
+                    payment.transaction_id;
+
+                paymentStatus =
+                    payment.status;
+            }
+
+            //---------------------------------------
+            // ESEWA
+            //---------------------------------------
+            else if (dto.PaymentGateway == "Esewa")
+            {
+                var response =
+                    await _httpClient.GetAsync(
+                        $"https://rc.esewa.com.np/api/epay/transaction/status/?product_code=EPAYTEST&total_amount={bill.TotalAmount}&transaction_uuid={dto.TransactionUuid}");
+
+                if (!response.IsSuccessStatusCode)
+                    return BadRequest("Esewa verification failed.");
+
+                var json =
+                    await response.Content.ReadAsStringAsync();
+
+                dynamic payment =
+                    JsonConvert.DeserializeObject(json);
+
+                if (payment.status != "COMPLETE")
+                    return BadRequest("Payment not completed.");
+
+                paidAmount =
+                    Convert.ToDecimal(payment.total_amount);
+
+                transactionId =
+                    payment.transaction_code;
+
+                paymentStatus =
+                    payment.status;
+            }
+            else
+            {
+                return BadRequest("Invalid Payment Gateway.");
+            }
+
+            //---------------------------------------
+            // Prevent Duplicate Payment
+            //---------------------------------------
+
+            bool exists =
+                await _context.tblTenantPayment
+                    .AnyAsync(x =>
+                        x.TransactionId == transactionId);
+
+            if (exists)
+                return BadRequest("Payment already verified.");
+
+            //---------------------------------------
+            // Insert Payment History
+            //---------------------------------------
+
+            var paymentHistory =
+                new TenantPaymentModel
+                {
+                    BillId = bill.BillId,
+                    TenantId = bill.TenantId,
+                    Amount = paidAmount,
+                    PaymentGateway = dto.PaymentGateway,
+                    TransactionId = transactionId,
+                    Pidx = dto.Pidx,
+                    Status = paymentStatus,
+                    PaymentDate = DateTime.Now,
+                    Remarks = "Online Payment"
+                };
+
+            await _context.tblTenantPayment
+                .AddAsync(paymentHistory);
+
+            //---------------------------------------
+            // Update Bill
+            //---------------------------------------
+
+            bill.PaidAmount += paidAmount;
+
+            bill.RemainingDue =
+                bill.TotalAmount -
+                bill.PaidAmount;
+
+            if (bill.RemainingDue <= 0)
+            {
+                bill.IsPaid = true;
+                bill.RemainingDue = 0;
+            }
+
+            await _context.SaveChangesAsync();
+
+            //---------------------------------------
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Payment Verified Successfully",
+                BillId = bill.BillId,
+                bill.TotalAmount,
+                bill.PaidAmount,
+                bill.RemainingDue,
+                bill.IsPaid
+            });
         }
     }
 }
