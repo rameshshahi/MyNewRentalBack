@@ -13,18 +13,20 @@ namespace NewRentalApi.Controllers
     [Route("api/[controller]")]
     public class BillController : ControllerBase
     {
+        private readonly INotificationService _notification;
         private readonly RentalDbContext _context;
         private readonly HttpClient _httpClient;
         private const string KhaltiSecretKey = "804be30cbb4e412cb39e10f5f9a98748"; // Replace with your test secret key
-        public BillController(RentalDbContext context)
+        public BillController(RentalDbContext context, INotificationService notification)
         {
             _httpClient = new HttpClient();
             _context = context;
+            _notification = notification;
         }
 
 
 
-            
+
         [HttpPost("GenerateBill")]
         public async Task<IActionResult> GenerateBill(GenerateBillDto dto)
         {
@@ -98,6 +100,8 @@ namespace NewRentalApi.Controllers
 
             await _context.SaveChangesAsync();
 
+            await _notification.SaveAndSendNotification(null,5,"New Bill Generated",$"Your bill of Rs {bill.TotalAmount} has been generated.","Bill");
+
             return Ok(bill);
         }
 
@@ -123,9 +127,9 @@ namespace NewRentalApi.Controllers
                 bill.IsPaid = true;
                 bill.RemainingDue = 0;
             }
-
+            var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
             await _context.SaveChangesAsync();
-
+            await _notification.SaveAndSendNotification(bill.TenantId,ownerId,"Payment Successful",$"Payment of Rs {bill.PaidAmount} received.\nRemaining Due : Rs {bill.RemainingDue}","Payment");
             return Ok(new
             {
                 bill.BillId,

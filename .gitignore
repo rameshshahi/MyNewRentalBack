@@ -1,0 +1,9 @@
+# Visual Studio
+.vs/
+
+# Build folders
+**/bin/
+**/obj/
+
+# Firebase service account key
+**/serviceAccountKey.json

@@ -17,6 +17,7 @@ namespace NewRentalApi.Models
 
         public string DatabaseName { get; set; }
 
+        public string? DeviceToken { get; set; }
         public bool IsActive { get; set; }
     }
 }

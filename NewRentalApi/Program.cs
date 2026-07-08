@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +9,15 @@ using NewRentalApi.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
+var firebasePath = Path.Combine(
+    builder.Environment.ContentRootPath,
+    "Firebase",
+    "serviceAccountKey.json");
 
+FirebaseApp.Create(new AppOptions
+{
+    Credential = GoogleCredential.FromFile(firebasePath)
+});
 // Add services to the container.
 
 builder.Services.AddControllers()   
@@ -18,6 +28,7 @@ builder.Services.AddControllers()
     });
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITenantProvider, TenantProvider>();
+builder.Services.AddScoped<INotificationService,NotificationService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddCors(options =>
 {
@@ -47,6 +58,7 @@ builder.Services.AddScoped<RentalDbContext>(provider =>
     return new RentalDbContext(options);
 });
 
+builder.Services.AddScoped<IFirebaseService, FirebaseService>();
 builder.Services.AddDbContext<MasterDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("MasterConnection")));
