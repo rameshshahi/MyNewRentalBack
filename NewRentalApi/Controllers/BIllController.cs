@@ -99,8 +99,8 @@ namespace NewRentalApi.Controllers
             await _context.tblTenantBill.AddAsync(bill);
 
             await _context.SaveChangesAsync();
-
-            await _notification.SaveAndSendNotification(null,5,"New Bill Generated",$"Your bill of Rs {bill.TotalAmount} has been generated.","Bill");
+            var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
+            await _notification.SaveAndSendNotification(dto.TenantId,ownerId,"New Bill Generated",$"Your bill of Rs {bill.TotalAmount} has been generated.","Bill");
 
             return Ok(bill);
         }
@@ -127,9 +127,16 @@ namespace NewRentalApi.Controllers
                 bill.IsPaid = true;
                 bill.RemainingDue = 0;
             }
-            var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
+            
             await _context.SaveChangesAsync();
-            await _notification.SaveAndSendNotification(bill.TenantId,ownerId,"Payment Successful",$"Payment of Rs {bill.PaidAmount} received.\nRemaining Due : Rs {bill.RemainingDue}","Payment");
+            var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
+
+            await _notification.SaveAndSendNotification(
+                bill.TenantId,
+                ownerId,
+                "Payment Successful",
+                $"Payment of Rs {bill.PaidAmount} received.\nRemaining Due : Rs {bill.RemainingDue}",
+                "Payment");
             return Ok(new
             {
                 bill.BillId,

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NewRentalApi.Data;
 using Microsoft.EntityFrameworkCore;
+using FirebaseAdmin.Auth.Multitenancy;
 
 namespace NewRentalApi.Controllers
 {
@@ -21,11 +22,20 @@ namespace NewRentalApi.Controllers
         [HttpGet("{tenantId}")]
         public async Task<IActionResult> Get(int tenantId)
         {
-            var notifications =
-                await _context.tblNotification
-                    .Where(x => x.TenantId == tenantId)
-                    .OrderByDescending(x => x.CreatedDate)
-                    .ToListAsync();
+            var notifications = await _context.tblNotification
+                .Where(x => x.TenantId == tenantId)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+
+            return Ok(notifications);
+        }
+        [HttpGet("Owner/{ownerId}")]
+        public async Task<IActionResult> GetForOwner(int ownerId)
+        {
+            var notifications = await _context.tblNotification
+                .Where(x => x.OwnerId == ownerId)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
 
             return Ok(notifications);
         }
@@ -60,17 +70,7 @@ namespace NewRentalApi.Controllers
             return Ok(count);
         }
 
-        [HttpGet("Owner/{ownerId}")]
-        public async Task<IActionResult> GetForOwner(int ownerId)
-        {
-            var notifications =
-                await _context.tblNotification
-                    .Where(x => x.OwnerId == ownerId)
-                    .OrderByDescending(x => x.CreatedDate)
-                    .ToListAsync();
-
-            return Ok(notifications);
-        }
+      
 
         [HttpGet("Owner/Unread/{ownerId}")]
         public async Task<IActionResult> UnreadCountForOwner(int ownerId)
