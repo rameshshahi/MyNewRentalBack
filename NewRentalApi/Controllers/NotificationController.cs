@@ -71,5 +71,17 @@ namespace NewRentalApi.Controllers
                 Message = "Notification sent to tenant."
             });
         }
+
+        [HttpPost("save-device-token")]
+        public async Task<IActionResult> SaveDeviceToken(DeviceTokenRequest request)
+        {
+            await _notificationService.SaveDeviceTokenAsync(request);
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Device token saved successfully."
+            });
+        }
     }
 }

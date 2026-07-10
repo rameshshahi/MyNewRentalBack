@@ -1,9 +1,12 @@
-﻿using NewRentalApi.Models;
+﻿using NewRentalApi.DTOs;
+using NewRentalApi.Models;
 
 namespace NewRentalApi.Services
 {
     public interface INotificationService
     {
+        Task SaveDeviceTokenAsync(DeviceTokenRequest request);
+
         Task SendToOwnerAsync(
             int ownerId,
             string title,

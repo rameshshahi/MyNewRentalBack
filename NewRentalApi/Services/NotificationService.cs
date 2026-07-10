@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using NewRentalApi.Data;
+    using NewRentalApi.DTOs;
     using NewRentalApi.Models;
 
     public class NotificationService : INotificationService
@@ -69,7 +70,7 @@
                 Title = title,
                 Message = message,
                 IsRead = false,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.UtcNow
             };
 
             _context.tblNotification.Add(notification);
@@ -107,5 +108,35 @@
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task SaveDeviceTokenAsync(DeviceTokenRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.DeviceToken))
+            {
+                return;
+            }
+            if (request.UserType.Equals("Owner", StringComparison.OrdinalIgnoreCase))
+            {
+                var owner = await _masterContext.tblOwner
+                    .FirstOrDefaultAsync(x => x.OwnerId == request.UserId);
+
+                if (owner != null)
+                {
+                    owner.DeviceToken = request.DeviceToken;
+                    await _masterContext.SaveChangesAsync();
+                }
+            }
+            else if (request.UserType == "Tenant")
+            {
+                var tenant = await _context.tblTenant.FirstOrDefaultAsync(x => x.TenantId == request.UserId);
+
+                if (tenant != null)
+                {
+                    tenant.DeviceToken = request.DeviceToken;
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
     }
 }
