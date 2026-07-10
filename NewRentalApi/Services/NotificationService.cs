@@ -7,56 +7,105 @@
     public class NotificationService : INotificationService
     {
         private readonly RentalDbContext _context;
+        private readonly IFirebaseService _firebaseService;
         private readonly MasterDbContext _masterContext;
-        private readonly IFirebaseService _firebase;
-
         public NotificationService(
             RentalDbContext context,
-            MasterDbContext masterContext,
-            IFirebaseService firebase)
+            IFirebaseService firebaseService,MasterDbContext masterDbContext)
         {
             _context = context;
-            _masterContext = masterContext;
-            _firebase = firebase;
+            _firebaseService = firebaseService;
+            _masterContext = masterDbContext;
         }
 
-        public async Task SaveAndSendNotification(
-            int? tenantId,
-            int? ownerId,
+        public async Task SendToOwnerAsync(
+            int ownerId,
             string title,
-            string message,
-            string type)
+            string message)
         {
-            var notification =
-                new NotificationModel
-                {
-                    TenantId = tenantId,
-                    OwnerId = ownerId,
-                    Title = title,
-                    Message = message,
-                    NotificationType = type,
-                    IsRead = false,
-                    CreatedDate = DateTime.Now
-                };
+            var owner = await _masterContext.tblOwner
+                .FirstOrDefaultAsync(x => x.OwnerId == ownerId);
 
-            await _context.tblNotification.AddAsync(notification);
+            if (owner == null)
+                return;
 
+            var notification = new NotificationModel
+            {
+                UserType = "Owner",
+                UserId = ownerId,
+                Title = title,
+                Message = message,
+                IsRead = false,
+                CreatedAt = DateTime.Now
+            };
+
+            _context.tblNotification.Add(notification);
             await _context.SaveChangesAsync();
 
-            var login =
-                await _masterContext.tblTenantLogin
-                    .FirstOrDefaultAsync(x =>
-                        x.TenantId == tenantId &&
-                        x.IsActive);
-
-            if (login != null &&
-                !string.IsNullOrWhiteSpace(login.DeviceToken))
+            if (!string.IsNullOrWhiteSpace(owner.DeviceToken))
             {
-                await _firebase.SendNotification(
-                    login.DeviceToken,
+                await _firebaseService.SendNotification(
+                    owner.DeviceToken,
                     title,
                     message);
             }
+        }
+
+        public async Task SendToTenantAsync(
+            int tenantId,
+            string title,
+            string message)
+        {
+            var tenant = await _context.tblTenant
+                .FirstOrDefaultAsync(x => x.TenantId == tenantId);
+
+            if (tenant == null)
+                return;
+
+            var notification = new NotificationModel
+            {
+                UserType = "Tenant",
+                UserId = tenantId,
+                Title = title,
+                Message = message,
+                IsRead = false,
+                CreatedAt = DateTime.Now
+            };
+
+            _context.tblNotification.Add(notification);
+            await _context.SaveChangesAsync();
+
+            if (!string.IsNullOrWhiteSpace(tenant.DeviceToken))
+            {
+                await _firebaseService.SendNotification(
+                    tenant.DeviceToken,
+                    title,
+                    message);
+            }
+        }
+
+        public async Task<List<NotificationModel>> GetNotificationsAsync(
+            string userType,
+            int userId)
+        {
+            return await _context.tblNotification
+                .Where(x => x.UserType == userType &&
+                            x.UserId == userId)
+                .OrderByDescending(x => x.CreatedAt)
+                .ToListAsync();
+        }
+
+        public async Task MarkAsReadAsync(int notificationId)
+        {
+            var notification = await _context.tblNotification
+                .FindAsync(notificationId);
+
+            if (notification == null)
+                return;
+
+            notification.IsRead = true;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

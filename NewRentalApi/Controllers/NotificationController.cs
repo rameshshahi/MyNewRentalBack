@@ -3,83 +3,73 @@ using Microsoft.AspNetCore.Mvc;
 using NewRentalApi.Data;
 using Microsoft.EntityFrameworkCore;
 using FirebaseAdmin.Auth.Multitenancy;
+using NewRentalApi.Services;
+using NewRentalApi.DTOs;
 
 namespace NewRentalApi.Controllers
 {
     [Authorize]
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class NotificationController : ControllerBase
     {
-        private readonly RentalDbContext _context;
+        private readonly INotificationService _notificationService;
 
-        public NotificationController(
-            RentalDbContext context)
+        public NotificationController(INotificationService notificationService)
         {
-            _context = context;
+            _notificationService = notificationService;
         }
 
-        [HttpGet("{tenantId}")]
-        public async Task<IActionResult> Get(int tenantId)
+        // GET: api/notification/Owner/1
+        [HttpGet("{userType}/{userId}")]
+        public async Task<IActionResult> GetNotifications(string userType, int userId)
         {
-            var notifications = await _context.tblNotification
-                .Where(x => x.TenantId == tenantId)
-                .OrderByDescending(x => x.CreatedDate)
-                .ToListAsync();
-
-            return Ok(notifications);
-        }
-        [HttpGet("Owner/{ownerId}")]
-        public async Task<IActionResult> GetForOwner(int ownerId)
-        {
-            var notifications = await _context.tblNotification
-                .Where(x => x.OwnerId == ownerId)
-                .OrderByDescending(x => x.CreatedDate)
-                .ToListAsync();
-
+            var notifications = await _notificationService.GetNotificationsAsync(userType, userId);
             return Ok(notifications);
         }
 
-        [HttpPut("Read/{id}")]
-        public async Task<IActionResult> MarkAsRead(int id)
+        // PUT: api/notification/read/5
+        [HttpPut("read/{notificationId}")]
+        public async Task<IActionResult> MarkAsRead(int notificationId)
         {
-            var notification =
-                await _context.tblNotification
-                    .FindAsync(id);
-
-            if (notification == null)
-                return NotFound();
-
-            notification.IsRead = true;
-
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            await _notificationService.MarkAsReadAsync(notificationId);
+            return Ok(new
+            {
+                Success = true,
+                Message = "Notification marked as read."
+            });
         }
 
-        [HttpGet("Unread/{tenantId}")]
-        public async Task<IActionResult> UnreadCount(
-            int tenantId)
+        // POST: api/notification/send-owner
+        [HttpPost("send-owner")]
+        public async Task<IActionResult> SendToOwner([FromBody] OwnerNotificationRequest request)
         {
-            var count =
-                await _context.tblNotification
-                    .CountAsync(x =>
-                        x.TenantId == tenantId &&
-                        !x.IsRead);
+            await _notificationService.SendToOwnerAsync(
+                request.OwnerId,
+                request.Title,
+                request.Message);
 
-            return Ok(count);
+            return Ok(new
+            {
+                Success = true,
+                Message = "Notification sent to owner."
+            });
         }
 
-      
-
-        [HttpGet("Owner/Unread/{ownerId}")]
-        public async Task<IActionResult> UnreadCountForOwner(int ownerId)
+        // POST: api/notification/send-tenant
+        [HttpPost("send-tenant")]
+        public async Task<IActionResult> SendToTenant([FromBody] TenantNotificationRequest request)
         {
-            var count =
-                await _context.tblNotification
-                    .CountAsync(x => x.OwnerId == ownerId && !x.IsRead);
+            await _notificationService.SendToTenantAsync(
+                request.TenantId,
+                request.Title,
+                request.Message);
 
-            return Ok(count);
+            return Ok(new
+            {
+                Success = true,
+                Message = "Notification sent to tenant."
+            });
         }
     }
 }

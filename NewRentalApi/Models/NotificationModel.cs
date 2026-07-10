@@ -7,17 +7,28 @@ namespace NewRentalApi.Models
     {
         [Key]
         public int NotificationId { get; set; }
-        public int? TenantId { get; set; }
-        public string Title { get; set; }
-        public string Message { get; set; }
-        public string NotificationType { get; set; }
-        public bool IsRead { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public virtual TenantModel Tenant { get; set; }
 
-        // Add the missing OwnerId property to fix the error
-        public int? OwnerId { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string UserType { get; set; } = string.Empty; // Owner or Tenant
 
-        public virtual OwnerModel Owner { get; set; }
+        [Required]
+        public int UserId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Title { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(500)]
+        public string Message { get; set; } = string.Empty;
+
+        [StringLength(50)]
+        public string NotificationType { get; set; } = string.Empty;
+        // BillGenerated, PaymentReceived, General, Reminder
+
+        public bool IsRead { get; set; } = false;
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

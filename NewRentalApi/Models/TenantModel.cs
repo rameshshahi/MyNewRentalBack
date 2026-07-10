@@ -28,5 +28,6 @@ namespace NewRentalApi.Models
         public bool IsActive { get; set; } = true;
 
         public virtual ICollection<TenantRoomModel> TenantRooms { get; set; }
+        public string? DeviceToken { get; set; }
     }
 }

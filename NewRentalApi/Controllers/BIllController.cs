@@ -100,14 +100,13 @@ namespace NewRentalApi.Controllers
 
             await _context.SaveChangesAsync();
             var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
-            await _notification.SaveAndSendNotification(dto.TenantId,ownerId,"New Bill Generated",$"Your bill of Rs {bill.TotalAmount} has been generated.","Bill");
+            await _notification.SendToTenantAsync(tenant.TenantId,"Bill Generated","Bill Generated amount 14500");
 
             return Ok(bill);
         }
 
         [HttpPost("PayBill")]
-        public async Task<IActionResult> PayBill(
-    PayBillDto dto)
+        public async Task<IActionResult> PayBill(PayBillDto dto)
         {
             var bill =
                 await _context.tblTenantBill
@@ -131,12 +130,7 @@ namespace NewRentalApi.Controllers
             await _context.SaveChangesAsync();
             var ownerId = int.Parse(User.FindFirst("OwnerId")!.Value);
 
-            await _notification.SaveAndSendNotification(
-                bill.TenantId,
-                ownerId,
-                "Payment Successful",
-                $"Payment of Rs {bill.PaidAmount} received.\nRemaining Due : Rs {bill.RemainingDue}",
-                "Payment");
+            await _notification.SendToOwnerAsync(ownerId,"Payment Successful", $"Payment of Rs {bill.PaidAmount} received.\nRemaining Due : Rs {bill.RemainingDue}");
             return Ok(new
             {
                 bill.BillId,
